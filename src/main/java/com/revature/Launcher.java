@@ -20,13 +20,10 @@ public class Launcher {
 		//here is the actual functionality of our application
 		
 		//create our menu object
-		//Menu menu = new Menu();
+		Menu menu = new Menu();
 		
 		//use the Menu's displayMenu() method to use the menu
-		//menu.displayMenu();
-		
-		//really clean main method right? Power of abstraction
-		
+		menu.displayMenu();
 		
 	}
 		
