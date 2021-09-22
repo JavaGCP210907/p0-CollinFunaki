@@ -7,12 +7,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.revature.dao.GamesDAO;
+import com.revature.dao.UserBetsDAO;
 import com.revature.dao.UsersDAO;
 
 public class Menu {
 	
 	UsersDAO uDao = new UsersDAO(); 
 	GamesDAO gDao = new GamesDAO();
+	UserBetsDAO bDao = new UserBetsDAO();
 	//Logger object so we can implement logging
 	Logger log = LogManager.getLogger(Menu.class); // 
 	
@@ -80,9 +82,30 @@ public class Menu {
 				break;			
 			}
 			
+			
 			case "place bet":{
 				
+				System.out.println("Enter your user ID.");
+				int userId = scan.nextInt();
 				
+				System.out.println("Enter game id.");
+				int gameId = scan.nextInt();
+				
+				System.out.println("What type of bet would you like to place (spread or over/under)?");
+				String type = scan.nextLine();
+				scan.nextLine();
+				
+				System.out.println("What is the bet you would like to place?");
+				String bet = scan.nextLine();
+				
+				System.out.println("How much money would you like to bet?");
+				int amount = scan.nextInt();
+				
+				//create a new User bet based on these inputs
+				UserBets b = new UserBets(userId, gameId, type, bet, amount);
+				
+				
+				bDao.placeBet(b);
 				
 			}
 			

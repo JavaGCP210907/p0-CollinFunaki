@@ -1,8 +1,10 @@
 package com.revature.dao;
 
+import com.revature.models.UserBets;
+
 public interface UserBetsDAOInterface {
 	
-	public void placeBet(int userId, int game_id, int betType, int amount);
+	public void placeBet(UserBets UserBet);
 	
 }
 
