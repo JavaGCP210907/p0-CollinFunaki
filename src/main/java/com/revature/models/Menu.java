@@ -54,7 +54,7 @@ public class Menu {
 				//get the account of the user from the DAO layer
 				System.out.println("What is your account id?");
 				int idInput = scan.nextInt();
-				scan.nextLine(); // we stilll need nextLine so that we can move the next line for more input
+				scan.nextLine(); // we still need nextLine so that we can move the next line for more input
 				
 				//what if user inputs a string> program crashes -- up t you to add fool proof mechanisms
 				

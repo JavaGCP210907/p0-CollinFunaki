@@ -3,8 +3,9 @@
 --create the necessary tables
 CREATE TABLE users ( 
 	user_id serial PRIMARY KEY,
-	bets_won int,
-	bets_lossed int,
+	fname TEXT,
+	lname TEXT,
+	bets_placed int,
 	net int,
 	total_wagered int
 	
@@ -37,6 +38,11 @@ CREATE TABLE user_bets (
 --	description text,
 --);
 
---DROP TABLE users
---DROP TABLE games
---DROP TABLE user_bets
+--DROP TABLE users;
+--DROP TABLE games;
+--DROP TABLE user_bets;
+
+--add data to tables
+INSERT INTO users (fname, lname, bets_placed, net, total_wagered)
+VALUES ('Bill', 'Gates', 54, -1090250, 2900000),
+		('Bezos', 'Jeffrey', 23, -200000, 1000000);

@@ -6,8 +6,7 @@ public class Users {
 		private int user_id;
 		private String f_name;
 		private String l_name;
-		private int bets_won;
-		private int bets_lossed;
+		private int bets_placed;
 		private int net;
 		private int total_wagered;
 
@@ -20,26 +19,24 @@ public class Users {
 		}
 
 		//all args constructor
-		public Users(int user_id, String f_name, String l_name, int bets_won, int bets_lossed, int net,
+		public Users(int user_id, String f_name, String l_name, int bets_placed, int net,
 				int total_wagered) {
 			super();
 			this.user_id = user_id;
 			this.f_name = f_name;
 			this.l_name = l_name;
-			this.bets_won = bets_won;
-			this.bets_lossed = bets_lossed;
+			this.bets_placed = bets_placed;
 			this.net = net;
 			this.total_wagered = total_wagered;
 		}
 
 		
 		//all args except auto increment primary key
-		public Users(String f_name, String l_name, int bets_won, int bets_lossed, int net, int total_wagered) {
+		public Users(String f_name, String l_name, int bets_placed, int net, int total_wagered) {
 			super();
 			this.f_name = f_name;
 			this.l_name = l_name;
-			this.bets_won = bets_won;
-			this.bets_lossed = bets_lossed;
+			this.bets_placed = bets_placed;
 			this.net = net;
 			this.total_wagered = total_wagered;
 		}
@@ -47,8 +44,8 @@ public class Users {
 		//toString 
 		@Override
 		public String toString() {
-			return "Users [user_id=" + user_id + ", f_name=" + f_name + ", l_name=" + l_name + ", bets_won=" + bets_won
-					+ ", bets_lossed=" + bets_lossed + ", net=" + net + ", total_wagered=" + total_wagered + "]";
+			return "Users [user_id=" + user_id + ", f_name=" + f_name + ", l_name=" + l_name + ", bets_placed=" + bets_placed
+					 + ", net=" + net + ", total_wagered=" + total_wagered + "]";
 		}
 
 		//getter and setter
@@ -76,20 +73,12 @@ public class Users {
 			this.l_name = l_name;
 		}
 
-		public int getBets_won() {
-			return bets_won;
+		public int getBets_placed() {
+			return bets_placed;
 		}
 
-		public void setBets_won(int bets_won) {
-			this.bets_won = bets_won;
-		}
-
-		public int getBets_lossed() {
-			return bets_lossed;
-		}
-
-		public void setBets_lossed(int bets_lossed) {
-			this.bets_lossed = bets_lossed;
+		public void setBets_won(int bets_placed) {
+			this.bets_placed = bets_placed;
 		}
 
 		public int getNet() {
@@ -112,8 +101,7 @@ public class Users {
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + bets_lossed;
-			result = prime * result + bets_won;
+			result = prime * result + bets_placed;
 			result = prime * result + ((f_name == null) ? 0 : f_name.hashCode());
 			result = prime * result + ((l_name == null) ? 0 : l_name.hashCode());
 			result = prime * result + net;
@@ -131,9 +119,7 @@ public class Users {
 			if (getClass() != obj.getClass())
 				return false;
 			Users other = (Users) obj;
-			if (bets_lossed != other.bets_lossed)
-				return false;
-			if (bets_won != other.bets_won)
+			if (bets_placed != other.bets_placed)
 				return false;
 			if (f_name == null) {
 				if (other.f_name != null)
@@ -153,6 +139,7 @@ public class Users {
 				return false;
 			return true;
 		}
+
 		
 		
 		

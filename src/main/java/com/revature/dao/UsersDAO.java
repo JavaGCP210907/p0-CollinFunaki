@@ -42,8 +42,7 @@ public class UsersDAO {
 						rs.getInt("user_id"),
 						rs.getString("f_name"),
 						rs.getString("l_name"),
-						rs.getInt("bets_won "),
-						rs.getInt("bets_lossed"),
+						rs.getInt("bets_placed "),
 						rs.getInt("net"),
 						rs.getInt("total_wagered")
 						);
