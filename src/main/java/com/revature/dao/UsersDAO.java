@@ -11,7 +11,7 @@ import java.util.List;
 import com.revature.models.Users;
 import com.revature.utils.ConnectionUtil;
 
-public class UsersDAO {
+public class UsersDAO implements UsersDAOInterface {
 	
 	public List<Users> getAccount(int id) {
 		
@@ -42,7 +42,7 @@ public class UsersDAO {
 						rs.getInt("user_id"),
 						rs.getString("f_name"),
 						rs.getString("l_name"),
-						rs.getInt("bets_placed "),
+						rs.getInt("bets_placed"),
 						rs.getInt("net"),
 						rs.getInt("total_wagered")
 						);
@@ -65,7 +65,14 @@ public class UsersDAO {
 	}
 	
 	
+	@Override
+	public void createAccount(Users user) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	
+	//add (update) money to user balance
 	public void deposit(int id) {
 		
 		
@@ -73,10 +80,12 @@ public class UsersDAO {
 	}
 	
 	
-	
-	public void withdraw(int id) { //subtract (update) money to user balance
+	//subtract (update) money to user balance
+	public void withdraw(int id) { 
 		
 	}
+
+
 
 
 

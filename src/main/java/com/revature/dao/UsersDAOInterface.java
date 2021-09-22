@@ -10,6 +10,8 @@ public interface UsersDAOInterface {
 	
 	public List<Users> getAccount(int id);//returns a list of user account info from Users table (select ?)
 	
+	public void createAccount(Users user);
+	
 	public void deposit(int id); //add (update) money to user balance in users table
 	
 	public void withdraw(int id); //subtract (update) money to user balance

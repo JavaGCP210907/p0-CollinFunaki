@@ -2,7 +2,7 @@ package com.revature.models;
 
 public class Users {
 
-	//fields for the employee class -- must match those in your database
+		//fields for the users class -- must match those in your database
 		private int user_id;
 		private String f_name;
 		private String l_name;
@@ -101,9 +101,9 @@ public class Users {
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + bets_placed;
 			result = prime * result + ((f_name == null) ? 0 : f_name.hashCode());
 			result = prime * result + ((l_name == null) ? 0 : l_name.hashCode());
+			result = prime * result + bets_placed;
 			result = prime * result + net;
 			result = prime * result + total_wagered;
 			result = prime * result + user_id;

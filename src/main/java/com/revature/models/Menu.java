@@ -38,7 +38,6 @@ public class Menu {
 			System.out.println("place bet -> place a bet");
 			System.out.println("deposit -> add money to account balance");
 			System.out.println("withdraw -> withdraw account balance");
-			
 			System.out.println("exit -> exit application");
 			
 			//parse user inputs after they choose a menu option
@@ -67,6 +66,26 @@ public class Menu {
 				break;	
 			}
 			
+			case "games": {
+				//get the List of employees from the DAO layer
+				List<Games> games = gDao.getGames();
+				
+				//enhanced for loop tp print out employees line by line
+				for(Games g : games) {
+					System.out.println(g);
+				}
+				
+				log.info("User retireved list of all games");
+				
+				break;			
+			}
+			
+			case "place bet":{
+				
+				
+				
+			}
+			
 			
 			case "exit":{
 				displayMenu = false; //this is how break out of while loop
@@ -82,7 +101,7 @@ public class Menu {
 		
 		}///while loop ends here
 		
-		System.out.println("Thank you for using the Funaki Sportsbook");
+		System.out.println("Thank you for using the Funaki Sportsbook!");
 		scan.close(); //closes the Scanner, good for memory saving
 	
 	}
