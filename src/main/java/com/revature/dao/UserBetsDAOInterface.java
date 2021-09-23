@@ -10,6 +10,8 @@ public interface UserBetsDAOInterface {
 	
 	public List<UserBets> getBets(int id);
 	
+	public void updateBet(int id, int amount);
+	
 	public void cancelBet(int id);
 	
 }

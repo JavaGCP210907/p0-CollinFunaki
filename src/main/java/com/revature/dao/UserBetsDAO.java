@@ -46,6 +46,7 @@ public class UserBetsDAO implements UserBetsDAOInterface{
 	}
 	
 	
+	//get bets under a particular user id
 	@Override
 	public List<UserBets> getBets(int id) {
 		
@@ -98,7 +99,32 @@ public class UserBetsDAO implements UserBetsDAOInterface{
 	}
 		
 	
+	//update a bet
+	@Override
+	public void updateBet(int id, int amount) {
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "update user_bets set amount = ? where bet_id = ?";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, amount);
+			ps.setInt(2, id);
+			
+			ps.executeUpdate();
+			
+			System.out.println("The amount for bet " + id + " has been changed to: $" + amount);
+			
+		} catch (SQLException e) {
+			System.out.println("Bet update failed");
+			e.printStackTrace();
+		}
 
+	}
+		
+
+	//cancel a bet
 	@Override
 	public void cancelBet(int id) {
 		

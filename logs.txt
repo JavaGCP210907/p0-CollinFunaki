@@ -1,0 +1,3 @@
+2021-09-22 21:17:01 INFO  Menu:82 - User retireved list of all games
+2021-09-22 22:32:27 INFO  Menu:86 - User retireved list of all games
+2021-09-22 22:33:28 INFO  Menu:72 - User viewed account

@@ -24,27 +24,29 @@ public class Menu {
 		Scanner scan = new Scanner(System.in);
 		
 		//pretty greeting :)
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("*********************************************************");
+		System.out.println();
 		System.out.println("Welcome to the Funaki Sportsbook!");
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println();
+		System.out.println("*********************************************************");
 		
 		//display the menu as long as displayMenu boolean is true
 		while(displayMenu) {
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("Choose an option");
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("Choose an option by entering a command below");
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			
 			//menu options
 			System.out.println("account -> view account info");
 			System.out.println("my bets -> view my bets");
 			System.out.println("games -> view games to bet on");
 			System.out.println("place bet -> place a bet");
+			System.out.println("update bet -> update a bet");
 			System.out.println("cancel bet -> cancel a bet");
-//			System.out.println("deposit -> add money to account balance");
-//			System.out.println("withdraw -> withdraw account balance");
 			System.out.println("exit -> exit application");
 			
 			//parse user inputs after they choose a menu option
+			System.out.println("Type entry here: ");
 			String input = scan.nextLine();
 			
 			//switch statement that takes the input and delivers the appropriate response
@@ -66,6 +68,8 @@ public class Menu {
 				for(Users u : users) {
 					System.out.println(u);
 				}
+				
+				log.info("User viewed account");
 				
 				break;	
 			}
@@ -127,7 +131,26 @@ public class Menu {
 					System.out.println(b);
 				}
 				
+				log.info("User view their bets");
+				
 				break;	
+			}
+			
+			
+			case "update bet":{
+				
+				System.out.println("Enter the bet id of the bet you would like to change");
+				int id = scan.nextInt();
+				
+				System.out.println("Enter the updated amount($) you want for your bet");
+				int updatedAmount = scan.nextInt();
+				scan.nextLine();
+				
+				bDao.updateBet(id, updatedAmount);
+				
+				log.warn("You updated bet " + id);
+				break;
+				
 			}
 			
 			
@@ -156,6 +179,8 @@ public class Menu {
 			//this default block will catch anything that doesn't match a menu option
 			default: {
 				System.out.println("Invalid Entry. Please try again.");
+				
+				log.warn("There was an invalid entry");
 			}
 			}//switch ends here
 		
@@ -163,6 +188,7 @@ public class Menu {
 		
 		System.out.println("Thank you for using the Funaki Sportsbook!");
 		scan.close(); //closes the Scanner, good for memory saving
+		log.info("Session ended");
 	
 	}
 }
