@@ -109,6 +109,7 @@ public class Menu {
 				
 				bDao.placeBet(b);
 				
+				log.info("User placed a bet");
 				
 			}
 			

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.models.UserBets;
+import com.revature.models.Users;
 import com.revature.utils.ConnectionUtil;
 
 public class UserBetsDAO implements UserBetsDAOInterface{
