@@ -2,7 +2,10 @@ package com.revature.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.models.UserBets;
 import com.revature.utils.ConnectionUtil;
@@ -40,5 +43,82 @@ public class UserBetsDAO implements UserBetsDAOInterface{
 		
 		
 	}
+	
+	
+	@Override
+	public List<UserBets> getBets(int id) {
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			ResultSet rs = null;
+			
+			String sql = "select * from user_bets where bet_id = ?";
+			
+			PreparedStatement ps = conn.prepareStatement(sql); //prepareStatement() as opposed to create Statement()
+			
+			//insert the methods argument (int id) as the first (and only) variable in our SQL query
+			ps.setInt(1, id); //the 1 here is referring to the first parameter (?) found in our sql string
+			
+			rs = ps.executeQuery();
+			
+			//the next chunks of code are copied from earlier
+			//create an empty lList to be filled
+			List<UserBets> bets = new ArrayList<>();
+			
+			//we technically dont need this while loop since we're only getting one result back
+			while(rs.next()) { //while there are results in the result set...
+				
+				//Use all args constructor to create a new User object from each returned row...
+				UserBets b = new UserBets(
+						//we want to use rs.xyz to get values from columns
+						rs.getInt("bet_id"),
+						rs.getInt("user_id_fk"),
+						rs.getInt("game_id_fk"),
+						rs.getString("bet_type"),
+						rs.getString("description"),
+						rs.getInt("amount")
+						);
+				 
+				
+				//and populate the ArrayList with each  bet
+				bets.add(b); //b is the new bets object we created above
+			}
+			//when there are no more reulsts in the ResultSet the while loop will break
+			//return the populated list of bets
+			return bets;
+			
+		}catch (SQLException u) {
+			System.out.println("Something went wrong with your database");
+			u.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+		
+	
+
+	@Override
+	public void cancelBet(int id) {
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "delete from user_bets where bet_id = ?";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1,  id);
+			ps.execute();
+			
+			System.out.println("The following bet was deleted: bet " + id);
+			
+		} catch (SQLException e) {
+			System.out.println("Bet could not be deleted.");
+			e.printStackTrace();
+		}
+		
+		
+	}
+
 	
 }

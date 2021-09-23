@@ -3,6 +3,7 @@ package com.revature.models;
 public class UserBets {
 	
 	//add varaibles from user_bets table
+	private int bet_id;
 	private int user_id_fk;
 	private int game_id_fk;
 	private String bet_type;
@@ -16,6 +17,18 @@ public class UserBets {
 		// TODO Auto-generated constructor stub
 	}
 
+	//all agrs constructor
+	public UserBets(int bet_id, int user_id_fk, int game_id_fk, String bet_type, String description, int amount) {
+		super();
+		this.bet_id = bet_id;
+		this.user_id_fk = user_id_fk;
+		this.game_id_fk = game_id_fk;
+		this.bet_type = bet_type;
+		this.description = description;
+		this.amount = amount;
+	}
+
+
 	public UserBets(int user_id_fk, int game_id_fk, String bet_type, String description, int amount) {
 		super();
 		this.user_id_fk = user_id_fk;
@@ -25,13 +38,6 @@ public class UserBets {
 		this.amount = amount;
 	}
 
-	public UserBets(int game_id_fk, String bet_type, String description, int amount) {
-		super();
-		this.game_id_fk = game_id_fk;
-		this.bet_type = bet_type;
-		this.description = description;
-		this.amount = amount;
-	}
 
 	@Override
 	public String toString() {

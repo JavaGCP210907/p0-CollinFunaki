@@ -35,11 +35,13 @@ public class Menu {
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			
 			//menu options
-			System.out.println("account -> view balance");
-			System.out.println("games -> view games and bets");
+			System.out.println("account -> view account info");
+			System.out.println("my bets -> view my bets");
+			System.out.println("games -> view games to bet on");
 			System.out.println("place bet -> place a bet");
-			System.out.println("deposit -> add money to account balance");
-			System.out.println("withdraw -> withdraw account balance");
+			System.out.println("cancel bet -> cancel a bet");
+//			System.out.println("deposit -> add money to account balance");
+//			System.out.println("withdraw -> withdraw account balance");
 			System.out.println("exit -> exit application");
 			
 			//parse user inputs after they choose a menu option
@@ -106,6 +108,40 @@ public class Menu {
 				
 				
 				bDao.placeBet(b);
+				
+				
+			}
+			
+			case "my bets": {
+				//get the account of the user from the DAO layer
+				System.out.println("What is your account id?");
+				int id = scan.nextInt();
+				scan.nextLine(); // we still need nextLine so that we can move the next line for more input
+				
+				//what if user inputs a string> program crashes -- up t you to add fool proof mechanisms
+				
+				List<UserBets> bets = bDao.getBets(id);
+				
+				for(UserBets b : bets) {
+					System.out.println(b);
+				}
+				
+				break;	
+			}
+			
+			
+			case "cancel bet":{
+				
+				System.out.println("Enter the id of the bet to cancel");
+				
+				int id = scan.nextInt();
+				scan.nextLine();
+				
+				bDao.cancelBet(id);
+				
+				log.warn("You deleted bet " + id);
+				
+				break;
 				
 			}
 			
