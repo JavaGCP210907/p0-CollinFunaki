@@ -54,7 +54,7 @@ public class UserBetsDAO implements UserBetsDAOInterface{
 			
 			ResultSet rs = null;
 			
-			String sql = "select * from user_bets where bet_id = ?";
+			String sql = "select * from user_bets where user_id_fk = ?";
 			
 			PreparedStatement ps = conn.prepareStatement(sql); //prepareStatement() as opposed to create Statement()
 			

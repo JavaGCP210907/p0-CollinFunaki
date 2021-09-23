@@ -115,6 +115,8 @@ public class Menu {
 				
 				log.info("User placed a bet");
 				
+				break;
+				
 			}
 			
 			case "my bets": {
@@ -131,7 +133,7 @@ public class Menu {
 					System.out.println(b);
 				}
 				
-				log.info("User view their bets");
+				log.info("User viewed their bets");
 				
 				break;	
 			}
@@ -148,7 +150,7 @@ public class Menu {
 				
 				bDao.updateBet(id, updatedAmount);
 				
-				log.warn("You updated bet " + id);
+				log.warn("You updated bet #" + id);
 				break;
 				
 			}
@@ -163,7 +165,7 @@ public class Menu {
 				
 				bDao.cancelBet(id);
 				
-				log.warn("You deleted bet " + id);
+				log.warn("You deleted bet #" + id);
 				
 				break;
 				

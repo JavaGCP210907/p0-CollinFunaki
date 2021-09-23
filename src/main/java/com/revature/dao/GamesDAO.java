@@ -30,7 +30,7 @@ public class GamesDAO implements GamesDAOInterface{
 			rs = ps.executeQuery();
 			
 			//the next chunks of code are copied from earlier
-			//create an empty lList to be filled
+			//create an empty List to be filled
 			List<Games> gameList = new ArrayList<>();
 			
 			//we technically dont need this while loop since we're only getting one result back
@@ -48,7 +48,7 @@ public class GamesDAO implements GamesDAOInterface{
 						);
 				 
 				
-				//and populate the ArrayList with each new Employee
+				//and populate the ArrayList with each new game
 			gameList.add(g); //e is the new employee object we created above
 			}
 			//when there are no more reulsts in the ResultSet the while loop will break
